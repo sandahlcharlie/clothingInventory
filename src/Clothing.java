@@ -28,8 +28,8 @@ public class Clothing{
         return "This garment is " + garment + " and it has been worn " + stock + "times";
     }
 
-    @Override
-    public boolean equals(int ){
-
-    }
+    public boolean equals(Clothing o){
+        if(o == null){ return false;}
+        return this.garment.equalsIgnoreCase(o.garment) && this.stock == o.stock;
+   }
 }
