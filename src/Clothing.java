@@ -2,9 +2,9 @@ public class Clothing{
     private String garment; //This will be the item of clothing
     private int stock; //This is the amount of items of clothing in stock
 
-    public Clothing(String garment, int cost){
+    public Clothing(String garment, int stock){
         this.garment = garment;
-        this.stock = cost;
+        this.stock = stock;
     }
 
     public String getGarment() {
@@ -25,7 +25,7 @@ public class Clothing{
 
     @Override
     public String toString(){
-        return "This garment is " + garment + " and it has been worn " + stock + "times";
+        return "This garment is " + garment + " and we have " + stock + " in stock";
     }
 
     public boolean equals(Clothing o){
