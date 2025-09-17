@@ -21,7 +21,7 @@ public class ClothingArrayDriver {
         return count;
     }
 
-    public int groupAvg(Clothing[] a, String s){
+    public static int groupAvg(Clothing[] a, String s){
        int sum = 0;
        int count = 0;
        for(Clothing item: a){
@@ -33,7 +33,7 @@ public class ClothingArrayDriver {
         return sum/count;
     }
 
-    public Clothing[] lessThan(Clothing[] a, Integer i){
+    public static Clothing[] lessThan(Clothing[] a, Integer i){
         ArrayList<Clothing> less = new ArrayList<>();
         for(Clothing item: a){
             if(item.getStock() < i){
@@ -43,7 +43,7 @@ public class ClothingArrayDriver {
         return less.toArray(new Clothing[0]);
     }
 
-    public void groupEdit(Clothing[] a, String s, Integer n){
+    public static void groupEdit(Clothing[] a, String s, Integer n){
         for(Clothing item: a){
             if(item.getGarment().equals(s)) {
                 item.setStock(item.getStock()+n);
