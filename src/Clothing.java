@@ -1,4 +1,4 @@
-public class Clothing{
+public class Clothing implements Comparable<Clothing>{
     private String garment; //This will be the item of clothing
     private int stock; //This is the amount of items of clothing in stock
 
@@ -25,11 +25,19 @@ public class Clothing{
 
     @Override
     public String toString(){
-        return "This garment is " + garment + " and we have " + stock + " in stock";
+        return  garment + "\t" + stock;
     }
 
     public boolean equals(Clothing o){
         if(o == null){ return false;}
         return this.garment.equalsIgnoreCase(o.garment) && this.stock == o.stock;
    }
+
+    @Override
+    public int compareTo(Clothing o) {
+        if (this.garment.compareToIgnoreCase(o.garment) != 0) {
+            return this.garment.compareToIgnoreCase(o.garment);
+        }
+        return Integer.compare(this.stock, o.stock);
+    }
 }
