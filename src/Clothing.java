@@ -28,7 +28,7 @@ public class Clothing implements Comparable<Clothing>{
         return  garment + "\t" + stock;
     }
 
-    public boolean equals(Clothing o){
+    public static boolean equals(Clothing o){
         if(o == null){ return false;}
         return this.garment.equalsIgnoreCase(o.garment) && this.stock == o.stock;
    }
