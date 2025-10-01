@@ -1,20 +1,20 @@
-jeans   10
-pants   4
-tshirt  9
-skirt   12
-socks   3
-sweater 15
-coat    7
-overalls    17
-dress   18
-polo    2
-shorts  9
-tshirt  9
-hat 18
-boots   6
-underwear   14
-sweatpants  11
-jersey  2
-tshirt 3
-pants   19
-dress   2
+1	jean	10	33
+1	pants	19	30
+2	tshirt	9	false
+3	skirt	12
+3	socks	3
+3	sweater	15
+3	coat	7
+3	overalls	17
+3	dress	18
+2	tshirt	9	false
+3	hat	18
+3	boots	6
+3	underwear	14
+1	sweatpants	11	32
+2	jersey	2	false
+2	tshirt	3	false
+1	pants	19	30
+3	dress	2
+1	shorts	9	7
+3	underwear	14

@@ -8,12 +8,27 @@ public class ClothingSortedArraySet {
     }
 
     public void insert(Clothing c) {
+        for (int k = 0; k < size(); k++) {
+            Clothing existing = ClothingAry[k];
+            boolean isDuplicate = false;
+
+            if (existing.getClass().equals(c.getClass())) {
+                if (existing instanceof Pants && c instanceof Pants) {
+                    isDuplicate = ((Pants)existing).equals((Pants)c);
+                } else if (existing instanceof Shirt && c instanceof Shirt) {
+                    isDuplicate = ((Shirt)existing).equals((Shirt)c);
+                } else if (!(existing instanceof Pants) && !(existing instanceof Shirt)) {
+                    isDuplicate = existing.equals(c);
+                }
+            }
+
+            if (isDuplicate) {
+                return; // Don't insert duplicates
+            }
+        }
         int i = size() - 1;
         while (i >= 0) {
             Clothing clothes = ClothingAry[i];
-            if (clothes.equals(c)) {
-                return;
-            }
             if (clothes.compareTo(c) > 0) {
                 ClothingAry[i + 1] = clothes;
                 i--;
@@ -37,6 +52,7 @@ public class ClothingSortedArraySet {
     public String toString(){
         String clothing = "";
         for(Clothing clothes:ClothingAry){
+            if(clothes == null){break;}
             clothing += clothes.toString() +"\n";
         }
         return clothing;
@@ -49,6 +65,7 @@ public class ClothingSortedArraySet {
             if (clothes.equals(c)){
                 return i;
             }
+            i--;
         }
         return -1;
     }
@@ -58,8 +75,9 @@ public class ClothingSortedArraySet {
         if(i == -1){return false;}
 
         for(int j = i; j < size()-1; j++){
-            ClothingAry[i] = ClothingAry[i+1];
+            ClothingAry[j] = ClothingAry[j+1];
         }
+        ClothingAry[size()-1] = null;
         return true;
     }
 
@@ -73,9 +91,9 @@ public class ClothingSortedArraySet {
         for (int i = 0; i < size(); i++) {
             Clothing c = ClothingAry[i];
 
-            if (type == 1 && c instanceof Shirt) {
+            if (type == 1 && c instanceof Pants) {
                 subset.insert(c);
-            } else if (type == 2 && c instanceof Pants) {
+            } else if (type == 2 && c instanceof Shirt) {
                 subset.insert(c);
             } else if (type == 3 && !(c instanceof Shirt) && !(c instanceof Pants)) {
                 subset.insert(c);

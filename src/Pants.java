@@ -19,6 +19,7 @@ public class Pants extends Clothing{
         return super.toString() + "\t" + length;
     }
 
+
     public boolean equals(Pants o) {
         if (o == null) return false;
         if (!super.equals(o)) return false;
