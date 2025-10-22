@@ -29,21 +29,83 @@ public class ClothingOrderedList {
 
     public Boolean add(int index, Clothing element) {
         ClothingNode cursor = head;
-        ClothingNode previousNode = head;
-        ClothingNode newNode = null;
-        int i = indexOf(element);
 
+        if (index < 1){return false;}
+        if (index > size()) {
+            add(element);
+            return true;
+        }
+        if (index == 1){head = new ClothingNode(element, head);}
+        else{
+            for (int i = 0; i < index - 2; i++) {
+                cursor = cursor.getLink();
+            }
+            cursor.setLink(new ClothingNode(element, cursor.getLink()));
+        }
+        manyNodes++;
+        return true;
+    }
+
+
+    public boolean remove(Clothing item) {
+        ClothingNode cursor = head;
+        ClothingNode previousNode = null;
+        if (head == null) {return false;}
+
+        if (head.getData().equals(item)) {
+            head = head.getLink();
+            manyNodes--;
+            return true;
+        }
 
         while (cursor != null) {
-            if (i == index) {
-                newNode.setLink(cursor);
-                previousNode.setLink(newNode);
-                break;
+            if (cursor.getData().equals(item)) {
+                if (previousNode == null) {
+                    head = cursor.getLink();
+                } else {
+                    previousNode.setLink(cursor.getLink());
+                }
+                manyNodes--;
+                return true;
             }
             previousNode = cursor;
             cursor = cursor.getLink();
         }
+
+        return false;
     }
+
+    public boolean remove(int index) {
+        ClothingNode cursor = head;
+        ClothingNode previousNode = null;
+
+        if (index < 1) {return false;}
+        if (index > size()) {
+            head = head.getLink();
+            manyNodes--;
+            return true;
+        }
+        if (index == 1) {
+            head = head.getLink();
+            manyNodes--;
+            return true;
+        }
+
+        for (int i = 1; i < index; i++) {
+            previousNode = cursor;
+            cursor = cursor.getLink();
+        }
+
+        if (previousNode == null) {
+            head = cursor.getLink();
+        } else {
+            previousNode.setLink(cursor.getLink());
+        }
+
+        manyNodes--;
+        return true;
+    }
+
 
     public int indexOf(Clothing item){
         ClothingNode cursor = head;
