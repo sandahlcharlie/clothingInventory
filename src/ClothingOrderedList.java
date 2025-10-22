@@ -131,7 +131,7 @@ public class ClothingOrderedList {
         if(index >size()){return null;}
         if (index < 1){return null;}
 
-        for(int i = 0; i < index; i++){
+        for(int i = 1; i < index; i++){
             cursor = cursor.getLink();
         }
         return cursor.getData();
