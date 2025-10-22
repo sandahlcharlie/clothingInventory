@@ -31,12 +31,14 @@ public class ClothingOrderedList {
         ClothingNode cursor = head;
 
         if (index < 1){return false;}
-        if (index > size()) {
-            add(element);
-            return true;
-        }
-        if (index == 1){head = new ClothingNode(element, head);}
-        else{
+        if (index == 1) {
+            head = new ClothingNode(element, head);
+        } else if (index == size() + 1) {
+            while (cursor.getLink() != null) {
+                cursor = cursor.getLink();
+            }
+            cursor.setLink(new ClothingNode(element, null));
+        } else {
             for (int i = 0; i < index - 2; i++) {
                 cursor = cursor.getLink();
             }
@@ -45,6 +47,7 @@ public class ClothingOrderedList {
         manyNodes++;
         return true;
     }
+
 
 
     public boolean remove(Clothing item) {
