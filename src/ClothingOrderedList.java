@@ -8,7 +8,15 @@ public class ClothingOrderedList {
     }
 
     public void add(Clothing item) {
-        head = new ClothingNode(item, head);
+        ClothingNode cursor = head;
+        if (head == null) {
+            head = new ClothingNode(item, null);
+        } else {
+            while (cursor.getLink() != null) {
+                cursor = cursor.getLink();
+            }
+            cursor.setLink(new ClothingNode(item, null));
+        }
         manyNodes++;
     }
 
@@ -19,7 +27,7 @@ public class ClothingOrderedList {
     public void display() {
         ClothingNode cursor = head;
         while (cursor != null) {
-            System.out.print(cursor.getData() + "\t");
+            System.out.println(cursor.getData() + "\t");
             cursor = cursor.getLink();
 
         }
@@ -115,5 +123,18 @@ public class ClothingOrderedList {
 
         if(cursor == null){return -1;}
         return index;
+    }
+
+    public Clothing get(int index){
+        ClothingNode cursor = head;
+
+        if(index >size()){return null;}
+        if (index < 1){return null;}
+
+        for(int i = 0; i < index; i++){
+            cursor = cursor.getLink();
+        }
+        return cursor.getData();
+
     }
 }
