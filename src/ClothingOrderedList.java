@@ -1,11 +1,9 @@
 public class ClothingOrderedList {
     private ClothingNode head;
-    private ClothingNode tail;
     private int manyNodes;
 
     public ClothingOrderedList() {
         this.head = null;
-        this.tail = null;
         manyNodes = 0;
     }
 
@@ -30,6 +28,7 @@ public class ClothingOrderedList {
     public Boolean add(int index, Clothing element) {
         ClothingNode cursor = head;
 
+        if(index >size()+1){return false;}
         if (index < 1){return false;}
         if (index == 1) {
             head = new ClothingNode(element, head);
@@ -83,11 +82,7 @@ public class ClothingOrderedList {
         ClothingNode previousNode = null;
 
         if (index < 1) {return false;}
-        if (index > size()) {
-            head = head.getLink();
-            manyNodes--;
-            return true;
-        }
+        if (index > size()) {return false;}
         if (index == 1) {
             head = head.getLink();
             manyNodes--;
