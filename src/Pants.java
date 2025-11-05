@@ -6,11 +6,11 @@ public class Pants extends Clothing{
         this.length = length;
     }
 
-    public int getIsLongSleeve() {
+    public int getLength() {
         return length;
     }
 
-    public void setIsLongSleeve(int length) {
+    public void setLength(int length) {
         this.length = length;
     }
 

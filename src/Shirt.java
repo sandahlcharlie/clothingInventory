@@ -1,7 +1,7 @@
 public class Shirt extends Clothing {
     private boolean isLongSleeve;
 
-    public Shirt(String garment, int stock, boolean isLongSleeve) {
+    public Shirt(String garment, int stock, Boolean isLongSleeve) {
         super(garment, stock);
         this.isLongSleeve = isLongSleeve;
     }
