@@ -25,7 +25,6 @@ public class ClothingStackQueueDriver {
 
         while (!s.isEmpty()) {
             Clothing c = s.pop();
-            String stock = String.valueOf(c.getStock());
             intString.insert(0, c.getStock());
             temp.push(c);
         }
@@ -280,7 +279,7 @@ public class ClothingStackQueueDriver {
         fourPop2.push(new Clothing("Socks", 15));
         fourPop2.push(new Clothing("Pants", 12));
         fourPop2.push(new Clothing("Jacket", 8));
-        fourPop2.push(new Clothing("Hat", 13));;
+        fourPop2.push(new Clothing("Hat", 13));
         System.out.println("input:");
         System.out.println(fourPop2);
         System.out.println("output (count 2):");
