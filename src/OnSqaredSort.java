@@ -30,6 +30,22 @@ public class OnSqaredSort extends Sort {
 
     }
 
+    public long[] runTiming() {
+        long[] times = new long[initial.length - 1];
+
+        for (int i = 1; i < initial.length; i++) {
+            int[] arr = new int[initial[i].length];
+            System.arraycopy(initial[i], 0, arr, 0, initial[i].length);
+
+            sw.startTimer();
+            insertionSort(arr);
+            sw.stopTimer();
+
+            times[i - 1] = sw.elapsedTime();
+        }
+
+        return times;
+    }
 
     private void insertionSort(int[] arr)
     {

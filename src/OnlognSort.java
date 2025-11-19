@@ -46,6 +46,23 @@ public class OnlognSort extends Sort {
         }
     }
 
+    public long[] runTiming() {
+        long[] times = new long[initial.length - 1];
+
+        for (int i = 1; i < initial.length; i++) {
+            int[] arr = new int[initial[i].length];
+            System.arraycopy(initial[i], 0, arr, 0, initial[i].length);
+
+            sw.startTimer();
+            mergeSort(arr, 0, arr.length - 1);
+            sw.stopTimer();
+
+            times[i - 1] = sw.elapsedTime();
+        }
+
+        return times;
+    }
+
     // Merges two subarrays of arr[].
     // First subarray is arr[l..m]
     // Second subarray is arr[m+1..r]

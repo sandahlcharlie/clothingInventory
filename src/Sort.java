@@ -35,4 +35,12 @@ public abstract class Sort {
         }
         return true;
     }
+
+    public int[] getArraySizes() {
+        int[] sizes = new int[initial.length - 1];
+        for (int i = 1; i < initial.length; i++) {
+            sizes[i - 1] = initial[i].length;
+        }
+        return sizes;
+    }
 }

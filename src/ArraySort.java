@@ -29,4 +29,21 @@ public class ArraySort extends Sort {
             }
         }
     }
+
+    public long[] runTiming() {
+        long[] times = new long[initial.length - 1]; // Exclude test array
+
+        for (int i = 1; i < initial.length; i++) {
+            int[] arr = new int[initial[i].length];
+            System.arraycopy(initial[i], 0, arr, 0, initial[i].length);
+
+            sw.startTimer();
+            Arrays.sort(arr);
+            sw.stopTimer();
+
+            times[i - 1] = sw.elapsedTime();
+        }
+
+        return times;
+    }
 }
