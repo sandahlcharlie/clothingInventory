@@ -6,7 +6,7 @@ public abstract class Sort {
     public Stopwatch sw;
 
     public Sort() {
-        int[] sizes = {TEST, 1000, 2000, 3000, 4000, 5000};
+        int[] sizes = {TEST, 100000, 200000, 300000, 400000, 500000};
         initial = new int[sizes.length][];
         Random r = new Random();
 

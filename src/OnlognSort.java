@@ -1,6 +1,6 @@
-// Bubble Sort algorithm adapted from https://www.geeksforgeeks.org/dsa/merge-sort/
-public class OlognSort extends Sort {
-    public OlognSort(){
+// mergeSort algorithm adapted from https://www.geeksforgeeks.org/dsa/merge-sort/
+public class OnlognSort extends Sort {
+    public OnlognSort(){
         super();
         int[][] sort = new int[initial.length][];
 
@@ -10,12 +10,12 @@ public class OlognSort extends Sort {
         }
         for (int i = 0; i < sort.length; i++) {
             sw.startTimer();
-            mergeSort(sort[i], 0, sort.length - 1);
+            mergeSort(sort[i], 0, sort[i].length - 1);
             sw.stopTimer();
 
             if (i == 0) {
                 // Print the test array (row 0)
-                System.out.println("\nOlog(n)n algo mergeSort - TEST array");
+                System.out.println("\nO(n log n) algo mergeSort - TEST array");
                 System.out.println("Before sorting:");
                 show(initial[0]);
                 System.out.println("\nAfter sorting:");
@@ -30,7 +30,7 @@ public class OlognSort extends Sort {
 
     // Main function that sorts arr[l..r] using
     // merge()
-    private void mergeSort(int arr[], int l, int r){
+    private void mergeSort(int[] arr, int l, int r){
 
         if (l < r) {
 
@@ -49,7 +49,7 @@ public class OlognSort extends Sort {
     // Merges two subarrays of arr[].
     // First subarray is arr[l..m]
     // Second subarray is arr[m+1..r]
-    private void merge(int arr[], int l, int m, int r){
+    private void merge(int[] arr, int l, int m, int r){
 
         // Find sizes of two subarrays to be merged
         int n1 = m - l + 1;

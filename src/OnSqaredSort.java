@@ -16,7 +16,7 @@ public class OnSqaredSort extends Sort {
 
             if (i == 0) {
                 // Print the test array (row 0)
-                System.out.println("\nO(n)^2 algo insertionSort - TEST array");
+                System.out.println("\nO(n^2) algo insertionSort - TEST array");
                 System.out.println("Before sorting:");
                 show(initial[0]);
                 System.out.println("\nAfter sorting:");
