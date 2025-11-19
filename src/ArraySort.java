@@ -17,14 +17,14 @@ public class ArraySort extends Sort {
 
             if (i == 0) {
                 // Print the test array (row 0)
-                System.out.println("ArraysSort - TEST array:");
+                System.out.println("ArraySort - TEST array:");
                 System.out.println("Before sorting:");
                 show(initial[0]);
                 System.out.println("\nAfter sorting:");
                 show(sort[0]);
                 System.out.println("Is it sorted? " + isSorted(sort[0]));
             } else {
-                System.out.println("ArraysSort - Array " + i + " (size " + sort[i].length +
+                System.out.println("ArraySort - Array " + i + " (size " + sort[i].length +
                         "): " + sw.elapsedTime() + " ms");
             }
         }
