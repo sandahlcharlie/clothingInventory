@@ -27,7 +27,7 @@ public class SortingDriver {
             // Write header
             writer.println("Run,Algorithm,Array,Time (ms)");
 
-            for (int run = 1; run <= 10; run++) {
+            for (int run = 1; run <= 50; run++) {
                 // ArraysSort
                 long[] arraysTimes = arraysSort.runTiming();
                 for (int i = 0; i < arraysTimes.length; i++) {
