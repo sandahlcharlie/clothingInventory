@@ -129,7 +129,7 @@ public class Order {
         StringBuilder sb = new StringBuilder();
         sb.append(restaurantName).append(" Table ").append(tableID).append("\n");
         sb.append("--------------------------------------------------------------------------------\n");
-        sb.append("Item\tPrice\t\tQty\tTotal\n");
+        sb.append(String.format("%-20s %-10s %-10s %-10s%n","Item","Price","Qty","Total"));
         sb.append("--------------------------------------------------------------------------------\n");
         toStringInorderRecursive(root, sb);
         sb.append("--------------------------------------------------------------------------------\n");

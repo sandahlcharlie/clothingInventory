@@ -39,8 +39,9 @@ public class MenuItem implements Comparable<MenuItem> {
     @Override
     public String toString(){
         double total = price * quantity;
-        return name + "\t$" + df.format(price) + "\t" + quantity + "\t$" + df.format(total);
-    }
+        String priceString = df.format(price);
+        String totalString = df.format(total);
+        return String.format("%-20s $%-9s %-10d $%s", name, price, quantity, total);    }
 
     public boolean equals(MenuItem o){
         if(o == null){ return false;}
