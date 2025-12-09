@@ -1,4 +1,17 @@
-public class RestaurantDriver {
+/**
+ * Driver class to test the order class using Binary Search Trees.
+ * Creates multiple orders with menu items and tests
+ * methods of Order, MenuItem, and BSTNode classes.
+ * @author Charles
+ * @version 0.1
+ */public class RestaurantDriver {
+    /**
+     * Main method that names the restaurant, creates 15 menu items
+     * Creates 2 orders and adds 15 items to each order in different
+     * order avoiding alphabetically
+     * Tests all methods and shows results before finally printing the
+     * receipts of the two orders.
+     */
     public static void main(String[] args) {
         Order.setRestaurantName("Salty's");
 
@@ -52,33 +65,31 @@ public class RestaurantDriver {
         order2.insert(item9);
         order2.insert(item3);
 
-        System.out.println("Size: " + order1.size());
-        System.out.println("Height: " + order1.height());
-        System.out.println("Total Quantity of items: " + order1.getTotalQty());
+        System.out.println("Size Order 1: " + order1.size());
+        System.out.println("Height Order 1: " + order1.height());
+        System.out.println("Total Quantity of items Order 1: " + order1.getTotalQty());
 
-        System.out.println("\nSearch for 'Cheeseburger':");
-        MenuItem found = order1.search("Cheeseburger");
-        if(found != null) {
-            System.out.println("Found: " + found.getName());
+        System.out.println("\nSearch for 'Cheeseburger' in order 1:");
+        MenuItem found1 = order1.search("Cheeseburger");
+        if(found1 != null) {
+            System.out.println("Found: " + found1.getName());
         } else {
             System.out.println("Item not found.");
         }
 
-        System.out.println("\nSearch for 'Pizza':");
-        MenuItem notFound = order1.search("Pizza");
-        if(notFound != null) {
-            System.out.println("Found: " + notFound.getName());
+        System.out.println("\nSearch for 'Pizza' in order 1:");
+        MenuItem notFound1 = order1.search("Pizza");
+        if(notFound1 != null) {
+            System.out.println("Found: " + notFound1.getName());
         } else {
             System.out.println("Item not found.");
         }
 
-        System.out.println("\nPreorder Traversal:");
+        System.out.println("\nPreorder Traversal Order 1:");
         order1.preorder();
-
-        System.out.println("\nInorder Traversal:");
+        System.out.println("\nInorder Traversal Order 1:");
         order1.inorder();
-
-        System.out.println("\nPostorder Traversal:");
+        System.out.println("\nPostorder Traversal Order 1:");
         order1.postorder();
 
         System.out.println("\nOrder 1 Totals/Tax/Tip");
@@ -86,6 +97,37 @@ public class RestaurantDriver {
         System.out.printf("Tax (10.5%%): $%.2f%n", order1.getTax(10.5));
         System.out.printf("Tip (18.5%%): $%.2f%n", order1.getTip(18.5));
 
+
+        System.out.println("Size Order 2: " + order2.size());
+        System.out.println("Height Order 2: " + order2.height());
+        System.out.println("Total Quantity of items Order 2: " + order2.getTotalQty());
+
+        System.out.println("\nSearch for 'Cheeseburger' in order 2:");
+        MenuItem found2 = order1.search("Cheeseburger");
+        if(found2 != null) {
+            System.out.println("Found: " + found2.getName());
+        } else {
+            System.out.println("Item not found.");
+        }
+
+        System.out.println("\nSearch for 'Pizza' in order 2:");
+        MenuItem notFound2 = order1.search("Pizza");
+        if(notFound2 != null) {
+            System.out.println("Found: " + notFound2.getName());
+        } else {
+            System.out.println("Item not found.");
+        }
+        System.out.println("\nPreorder Traversal Order 2:");
+        order2.preorder();
+        System.out.println("\nInorder Traversal Order 2:");
+        order2.inorder();
+        System.out.println("\nPostorder Traversal Order 2:");
+        order2.postorder();
+
+        System.out.println("\nOrder 2 Totals/Tax/Tip");
+        System.out.printf("Total Before Tax/Tip: $%.2f%n", order2.getTotalBeforeTaxAndTip());
+        System.out.printf("Tax (10.5%%): $%.2f%n", order2.getTax(10.5));
+        System.out.printf("Tip (18.5%%): $%.2f%n", order2.getTip(18.5));
         System.out.println("\nPrint Both Orders:\n");
 
         System.out.println(order1.toString());
