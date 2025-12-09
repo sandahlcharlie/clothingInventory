@@ -10,7 +10,7 @@ public class BSTNode {
     private BSTNode right;
 
     /**
-     * Constructs node with MenuItem as data and left and right child nodes
+     * Constructs node
      * @param m is the MenuItem to store
      * @param l this is left child node
      * @param r this is right child node
