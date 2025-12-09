@@ -4,22 +4,18 @@ public class Order {
     private static String restaurantName;
 
     public String getTableID() {return tableID;}
-
     public void setTableID(String tableID) {this.tableID = tableID;}
-
     public BSTNode getRoot() {return root;}
-
     public void setRoot(BSTNode root) {this.root = root;}
+    public static void setRestaurantName(String name) {restaurantName = name;}
 
-    public Order( String tableID ) {
+    public Order(String tableID) {
         this.tableID = tableID;
         this.root = null;
     }
 
 
-    public void insert(MenuItem m) {
-        root = insertRecursive(root, m);
-    }
+    public void insert(MenuItem m) {root = insertRecursive(root, m);}
     private BSTNode insertRecursive(BSTNode node, MenuItem m) {
         if (node == null) {
             return new BSTNode(m, null, null);
@@ -38,9 +34,7 @@ public class Order {
     }
 
 
-    public void preorder() {
-        preorderRecursive(root);
-    }
+    public void preorder() {preorderRecursive(root);}
     private void preorderRecursive(BSTNode node) {
         if (node != null) {
             System.out.println(node.getData());
@@ -50,9 +44,7 @@ public class Order {
     }
 
 
-    public void inorder() {
-        inorderRecursive(root);
-    }
+    public void inorder() {inorderRecursive(root);}
     private void inorderRecursive(BSTNode node) {
         if (node != null) {
             inorderRecursive(node.getLeft());
@@ -62,9 +54,7 @@ public class Order {
     }
 
 
-    public void postorder() {
-        postorderRecursive(root);
-    }
+    public void postorder() {postorderRecursive(root);}
     private void postorderRecursive(BSTNode node) {
         if (node != null) {
             postorderRecursive(node.getLeft());
@@ -74,9 +64,7 @@ public class Order {
     }
 
 
-    public int size() {
-        return sizeRecursive(root);
-    }
+    public int size() {return sizeRecursive(root);}
     private int sizeRecursive(BSTNode node) {
         if (node == null) {
             return 0;
@@ -85,9 +73,7 @@ public class Order {
     }
 
 
-    public int height() {
-        return heightRecursive(root);
-    }
+    public int height() {return heightRecursive(root);}
     private int heightRecursive(BSTNode node) {
         if (node == null) {
             return -1;
@@ -98,9 +84,7 @@ public class Order {
         return 1 + Math.max(leftHeight, rightHeight);
     }
 
-    public int getTotalQty() {
-        return getTotalQtyRecursive(root);
-    }
+    public int getTotalQty() {return getTotalQtyRecursive(root);}
     private int getTotalQtyRecursive(BSTNode node) {
         if (node == null) {
             return 0;
@@ -110,9 +94,7 @@ public class Order {
                 + getTotalQtyRecursive(node.getRight());
     }
 
-    public MenuItem search(String itemName) {
-        return searchRecursive(root, itemName);
-    }
+    public MenuItem search(String itemName) {return searchRecursive(root, itemName);}
     private MenuItem searchRecursive(BSTNode node, String itemName) {
         if (node == null) {
             return null;
@@ -127,59 +109,46 @@ public class Order {
         }
     }
 
-    public double getTotalBeforeTaxAndTip() {
-        return getTotalRecursive(root);
-    }
-    private double getTotalRecursive(BSTNode node) {
+
+    public double getTotalBeforeTaxAndTip() {return getTotalBeforeTaxAndTipRecursive(root);}
+    private double getTotalBeforeTaxAndTipRecursive(BSTNode node) {
         if (node == null) {
             return 0.0;
         }
         double currentItemTotal = node.getData().getPrice() * node.getData().getQuantity();
-        return currentItemTotal + getTotalRecursive(node.getLeft()) + getTotalRecursive(node.getRight());
+        return currentItemTotal
+                + getTotalBeforeTaxAndTipRecursive(node.getLeft())
+                + getTotalBeforeTaxAndTipRecursive(node.getRight());
     }
+    public double getTip(double tipPct) {return getTotalBeforeTaxAndTip() * (tipPct / 100.0);}
+    public double getTax(double taxPct) {return getTotalBeforeTaxAndTip() * (taxPct / 100.0);}
 
-    public double getTip(double tipPct) {
-        double subtotal = getTotalBeforeTaxAndTip();
-        return subtotal * (tipPct / 100.0);
-    }
 
-    public double getTax(double taxPct) {
-        double subtotal = getTotalBeforeTaxAndTip();
-        return subtotal * (taxPct / 100.0);
-    }
-
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-
-        sb.append("Downtown Café Table 12\n");
+        sb.append(restaurantName).append(" Table ").append(tableID).append("\n");
         sb.append("--------------------------------------------------------------------------------\n");
-        sb.append(String.format("%-10s\t$ %-10s\t%-5s\tTotal\n", "Item", "Price", "Qty"));
+        sb.append("Item\tPrice\t\tQty\tTotal\n");
         sb.append("--------------------------------------------------------------------------------\n");
-        buildStringRecursive(root, sb);
-        double subtotal = getTotalBeforeTaxAndTip();
-        double taxAmount = getTax(8.0);
-        double tipAmount = getTip(20.0);
-        double grandTotal = subtotal + taxAmount + tipAmount;
+        toStringInorderRecursive(root, sb);
         sb.append("--------------------------------------------------------------------------------\n");
-        sb.append(String.format("Total:\t$%.2f\n", subtotal));
-        sb.append(String.format("Tax:\t\t$ %.2f\n", taxAmount));
-        sb.append(String.format("Tip:\t\t$ %.2f\n", tipAmount));
+        double total = getTotalBeforeTaxAndTip();
+        double tax = getTax(8.0);
+        double tip = getTip(20.0);
+        double grandTotal = total + tax + tip;
+        sb.append("Total:\t$").append(String.format("%.2f", total)).append("\n");
+        sb.append("Tax:\t$ ").append(String.format("%.2f", tax)).append("\n");
+        sb.append("Tip:\t$ ").append(String.format("%.2f", tip)).append("\n");
         sb.append("--------------------------------------------------------------------------------\n");
-        sb.append(String.format("Grand total: $ %.2f", grandTotal));
+        sb.append("Grand total: $ ").append(String.format("%.2f", grandTotal)).append("\n");
         return sb.toString();
     }
-
-    private void buildStringRecursive(BSTNode node, StringBuilder sb) {
-        if (node == null) {
-            return;
+    private void toStringInorderRecursive(BSTNode node, StringBuilder sb) {
+        if (node != null) {
+            toStringInorderRecursive(node.getLeft(), sb);
+            sb.append(node.getData().toString()).append("\n");
+            toStringInorderRecursive(node.getRight(), sb);
         }
-        buildStringRecursive(node.getLeft(), sb);
-        double itemTotal = node.getData().getPrice() * node.getData().getQuantity();
-        sb.append(String.format("%-10s\t$ %5.2f\t\t%d\t\t$%5.2f\n",
-                node.getData().getName(),
-                node.getData().getPrice(),
-                node.getData().getQuantity(),
-                itemTotal));
-        buildStringRecursive(node.getRight(), sb);
     }
 }
